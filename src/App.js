@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Table from './Table';
+import data from "./data.json";
+
+const getHeadings = () => {
+  const headings = Object.keys(data[0]).reduce(function(result, element) {
+    if (element !== "Quotes") {
+      result.push(element);
+    }
+    return result;
+  }, []);
+
+  const companies = Object.values(data[0]['Quotes']).map(function(element){
+    return element.Company;
+  })
+
+  return headings.concat(companies);
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Table theadData={getHeadings()} tbodyData={data} filter="FinalPrice"/> 
     </div>
   );
 }

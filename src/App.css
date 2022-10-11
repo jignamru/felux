@@ -1,3 +1,14 @@
+td.min {
+  background-color: greenyellow;
+  border: solid 1px green;
+}
+
+td.max {
+  background-color: red;
+  border-color:rebeccapurple;
+}
+
+
 .App {
   text-align: center;
 }
